@@ -1,17 +1,20 @@
 import React, {CSSProperties} from "react";
 import Header from "./header";
+import Content from "./content";
 
 export default function Layout(){
-    return <div style = {{...flex}}>
-        <Header/>
-    </div>
+    return (
+        <div style = {{...flex}}>
+            <Header/>
+            <Content/>
+        </div>
+    );
 }
 
 const flex: CSSProperties = {
     display: "flex",
-    height: "4em",
+    height: "100%",
     background: "black",
-    color: "#E1E1E1",
-    alignItems: "stretch",
-    padding: "0 1em"
+    flexDirection: "column",
+    color: "#E1E1E1"
 }
