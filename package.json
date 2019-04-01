@@ -1,0 +1,22 @@
+{
+  "name": "react-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SebastianJohanssonn/React-playground.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SebastianJohanssonn/React-playground/issues"
+  },
+  "homepage": "https://github.com/SebastianJohanssonn/React-playground#readme",
+  "dependencies": {
+    "webpack": "^4.29.6"
+  }
+}
