@@ -1,4 +1,4 @@
-import React, {CSSProperties} from "React";
+import React from "React";
 
 export interface HelloProps { compiler: string; framework: string; }
 
