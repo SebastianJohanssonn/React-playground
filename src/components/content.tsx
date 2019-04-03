@@ -13,6 +13,5 @@ const style: CSSProperties = {
     height: "100%",
     display: "flex",
     flexDirection: "column",
-    alignItems: "stretch",
-    background: "grey"
+    marginTop: "1em"
 }

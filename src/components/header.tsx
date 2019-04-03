@@ -1,14 +1,22 @@
 import React, {CSSProperties} from "react";
 
 export default function Header(){
-    return <h1 style = {header}>React Playground</h1>
+    return (
+        <div style = {header}>
+            <h1 style = {font}>React Playground</h1>
+        </div>
+    );
 }
 
 const header: CSSProperties = {
-    fontSize: "1.7em",
     margin: 0,
     padding: 0,
-    cursor: "pointer",
     display: "flex",
     alignItems: "center"
+}
+
+const font: CSSProperties = {
+    fontSize: "1.7em",
+    cursor: "pointer",
+
 }
