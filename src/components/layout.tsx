@@ -33,7 +33,7 @@ export default class Layout extends React.Component<{}, State>{
         return (
             <div style={{ ...columnFlex, ...fullScreen, ...background }}>
                 <Header onclick = {this.handleClick}/>
-                <View clickMain = {this.handleViewClick}/>
+                <View clickMain = {this.handleViewClick} view={this.state.view}/>
             </div>
         );
     }
