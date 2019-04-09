@@ -1,4 +1,5 @@
 import React, { CSSProperties } from 'react';
+import { Link } from 'react-router-dom';
 
 interface Props {
     onclick: () => void
@@ -8,7 +9,9 @@ export default function Header(props: Props) {
 
     return (
         <div style={header}>
-            <h1 style={headerItem} onClick = {props.onclick}>React Playground</h1>
+            <Link to="/test">
+                <h1 style={headerItem} onClick = {props.onclick}>React Playground</h1>
+            </Link>
         </div>
     );
 }
