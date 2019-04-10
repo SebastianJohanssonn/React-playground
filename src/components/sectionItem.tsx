@@ -6,12 +6,8 @@ import { Link } from 'react-router-dom';
 export default function SectionItem(props: Props) {
     const imageSrc = `../assets/${props.view}.jpg`;
 
-    const handleOnClick = function(){
-        props.onSectionClick(props.view)
-    }
-
     return (
-        <Link to= {"/"+props.view} style={{ ...gridItem, ...centeredContent }} onClick = {handleOnClick}>
+        <Link to= {"/"+props.view} style={{ ...gridItem, ...centeredContent }}>
             <img src={imageSrc} style={fullscreen}/>
             <h1 style={{ ...centeredAbsolute, ...appearance}}>{props.view}</h1>
         </Link>
@@ -20,7 +16,6 @@ export default function SectionItem(props: Props) {
 
 interface Props {
     view: View
-    onSectionClick: (view:View) => void
 }
 
 const gridItem: CSSProperties = {

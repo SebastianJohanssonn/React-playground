@@ -19,7 +19,6 @@ export default function detailView(props:Props){
 
 const divStyle: CSSProperties = {
     flexGrow: 1,
-    margin: '0.5em',
     background: '#808080',
     height: "100%"
 }

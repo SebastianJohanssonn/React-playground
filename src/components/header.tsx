@@ -1,16 +1,13 @@
 import React, { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 
-interface Props {
-    onclick: () => void
-}
+
 /** React function component */
-export default function Header(props: Props) {
+export default function Header() {
 
     return (
-        
             <div style={header}>
-                <Link to="/" style={headerItem} onClick = {props.onclick}>React Playground</Link>
+                <Link to="/" style={headerItem}>React Playground</Link>
             </div>
     );
 }
