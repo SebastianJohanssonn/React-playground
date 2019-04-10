@@ -1,6 +1,5 @@
-import React, { CSSProperties, Props } from 'react';
+import React, { CSSProperties } from 'react';
 import Header from './header';
-//import Content from './mainview';
 import View from './viewcontainer'
 import { fullScreen } from '../css';
 

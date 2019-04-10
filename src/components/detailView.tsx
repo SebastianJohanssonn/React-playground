@@ -5,7 +5,7 @@ interface Props{
     view: View
 }
 
-export default function detailView(props:Props){
+export default function DetailView(props:Props){
 
     const imageSrc = `../assets/${props.view}.jpg`;
 
