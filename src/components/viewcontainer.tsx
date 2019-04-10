@@ -1,17 +1,26 @@
-import React from "react";
+import React, {CSSProperties} from "react";
 import MainView from "./mainview";
 import DetailView from "./detailView";
 import { View } from './layout';
-interface Props{
-    clickMain: (view:View) => void;
-    view: View
+import { Route } from "react-router";
+
+
+export default function view(){
+    
+        return (
+            <div style={container}>
+                <Route exact path="/" component={MainView}/>
+                <Route path="/forest" render={() => <DetailView view="forest"/>}/>    
+                <Route path="/sky" render={() => <DetailView view="sky"/>}/>
+                <Route path="/desert" render={() => <DetailView view="desert"/>}/>
+            </div>
+        )
 }
 
-export default function view(props:Props){
-    if(props.view == "main"){
-        return (
-            <MainView onSectionClick={props.clickMain}/>
-        )
-    }
-    return <DetailView view={props.view}/>
+const container: CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+    margin: '0.5em',
+    gridTemplateColumns: '50% 50%',
 }
