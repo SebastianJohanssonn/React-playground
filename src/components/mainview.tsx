@@ -4,7 +4,7 @@ import { View } from './layout';
 
 /** React function component */
 export default function mainView() {
-
+    
     const sectionIds: View[] = ['forest', 'sky', 'desert'];
 
     return (

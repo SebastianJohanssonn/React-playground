@@ -6,9 +6,8 @@ interface Props{
 }
 
 export default function DetailView(props:Props){
-
     const imageSrc = `../assets/${props.view}.jpg`;
-
+    
     return (
         <div style={divStyle}>
             <img src={imageSrc} style={imageStyle}/>
@@ -19,12 +18,12 @@ export default function DetailView(props:Props){
 
 const divStyle: CSSProperties = {
     flexGrow: 1,
-    background: '#808080',
-    height: "100%"
+    background: '#808080'
 }
 
 const imageStyle: CSSProperties = {
     width: "100%",
+    height: "100%",
     objectFit: 'cover'
 }
 

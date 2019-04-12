@@ -5,7 +5,8 @@ import {centeredContent, fullScreen} from "../css";
 export default function() {
     return (
         <div style={{...centeredContent, ...fullScreen}}>
-            <CircleLoader size={1.5} sizeUnit="em" color="white"/>
+            <CircleLoader size={10} sizeUnit="em" color="white"/>
+            <h1 style={appereance}>Loading...</h1>
         </div>
     );
 }

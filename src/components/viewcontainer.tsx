@@ -1,13 +1,15 @@
 import React, {CSSProperties, Suspense, lazy} from "react";
 import { Route } from "react-router";
 import Spinner from "./spinner";
+import ErrorBoundary from "./errorBoundary";
 
 const MainView = lazy(() => import('./mainview'));
 const DetailView = lazy(() => import('./detailview'));
 
 export default function View(){
     
-        return (
+    return (
+        <ErrorBoundary fallbackUI={<Spinner/>}>
             <Suspense fallback={<Spinner/>}>
                 <div style={container}>
                     <Route exact path="/" component={MainView}/>
@@ -16,12 +18,12 @@ export default function View(){
                     <Route path="/desert" render={() => <DetailView view="desert"/>}/>
                 </div>
             </Suspense>
-        )
+        </ErrorBoundary>
+    )
 }
 
 const container: CSSProperties = {
     display: 'flex',
-    flexDirection: 'column',
     height: '100%',
     margin: '0.5em',
     gridTemplateColumns: '50% 50%',
