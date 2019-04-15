@@ -1,7 +1,7 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import ReactDOM from "react-dom";
 import {View} from "./layout";
-import { fullScreen, centeredContent} from "../css";
+import { fullScreen, centeredContent, fullscreenAbsolute} from "../css";
 
 interface Props {
     /** Using a persistent modal may cause it to never close if not handled manually */
@@ -35,7 +35,7 @@ export default class Modal extends React.Component<Props> {
 
     render() {
         return ReactDOM.createPortal(
-            <div style={{ ...fullScreen, ...centeredContent }} onClick={this.onclick}>
+            <div style={{...centeredContent, ...fullScreen}} onClick={this.onclick}>
                 {this.props.children}
             </div>,
             this.element,

@@ -1,10 +1,7 @@
 import React, {CSSProperties, Suspense, lazy} from "react";
 import { Route } from "react-router";
-import Spinner from "./spinner";
-import ErrorBoundary from "./errorBoundary";
-
-const MainView = lazy(() => import('./mainview'));
-const DetailView = lazy(() => import('./detailview'));
+import MainView from "./mainview";
+import DetailView from "./detailView";
 
 export default function View(){
     
