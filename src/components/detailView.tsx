@@ -1,19 +1,36 @@
 import React, { CSSProperties } from "react";
 import { View } from "./layout";
+import Modal from "./modal";
 
-interface Props{
+interface Props {
     view: View
 }
 
-export default function DetailView(props:Props){
-    const imageSrc = `../assets/${props.view}.jpg`;
+export default class DetailView extends React.Component<Props, {}>{
+    state = {show: false}
+    imageSrc = `../assets/${this.props.view}.jpg`;
+    toggleModal = () => {
+        this.setState({ show: !this.state.show })
+    }
+    private get renderModal() {
+        if(this.state.show){
+            return (
+                <Modal>
+                    <h1>Modal</h1>
+                </Modal>
+            )
+        }
+    }
     
-    return (
-        <div style={divStyle}>
-            <img src={imageSrc} style={imageStyle}/>
-            <h1 style={centeredAbsolute}>{props.view}</h1>
-        </div>
-    )
+    render(){
+        return (
+            <div style={divStyle}>
+                <button onClick={this.toggleModal} style={centeredAbsolute}>Öppna</button>
+                <img src={this.imageSrc} style={imageStyle}/>
+                {this.renderModal}
+            </div>
+        )
+    }
 }
 
 const divStyle: CSSProperties = {
