@@ -9,16 +9,12 @@ const DetailView = lazy(() => import('./detailview'));
 export default function View(){
     
     return (
-        <ErrorBoundary fallbackUI={<Spinner/>}>
-            <Suspense fallback={<Spinner/>}>
-                <div style={container}>
-                    <Route exact path="/" component={MainView}/>
-                    <Route path="/forest" render={() => <DetailView view="forest"/>}/>    
-                    <Route path="/sky" render={() => <DetailView view="sky"/>}/>
-                    <Route path="/desert" render={() => <DetailView view="desert"/>}/>
-                </div>
-            </Suspense>
-        </ErrorBoundary>
+        <div style={container}>
+            <Route exact path="/" component={MainView}/>
+            <Route path="/forest" render={() => <DetailView view="forest"/>}/>    
+            <Route path="/sky" render={() => <DetailView view="sky"/>}/>
+            <Route path="/desert" render={() => <DetailView view="desert"/>}/>
+        </div>
     )
 }
 

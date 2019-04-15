@@ -1,53 +1,59 @@
 import React, { CSSProperties } from "react";
 import { View } from "./layout";
 import Modal from "./modal";
+import { fullscreenAbsolute, fullScreen, centeredContent } from '../css';
 
 interface Props {
     view: View
 }
+interface State {
+    isModalOpen: boolean
+}
 
-export default class DetailView extends React.Component<Props, {}>{
-    state = {show: false}
-    imageSrc = `../assets/${this.props.view}.jpg`;
-    toggleModal = () => {
-        this.setState({ show: !this.state.show })
+export default class DetailView extends React.Component<Props, State> {
+
+    state: State = {
+        isModalOpen: false
     }
-    private get renderModal() {
-        if(this.state.show){
-            return (
-                <Modal>
-                    <h1>Modal</h1>
-                </Modal>
-            )
-        }
+
+    private get imageSrc() {
+        return `../assets/${this.props.view}.jpg`;
     }
-    
-    render(){
+
+    private openModal = () => this.setState({ isModalOpen: true });
+    private closeModal = () => this.setState({ isModalOpen: false });
+
+    render() {
         return (
-            <div style={divStyle}>
-                <button onClick={this.toggleModal} style={centeredAbsolute}>Öppna</button>
-                <img src={this.imageSrc} style={imageStyle}/>
-                {this.renderModal}
+            <div style={container}>
+                <img src={this.imageSrc} style={{ ...fullscreenAbsolute }}/>
+                <div style={{ ...content, ...fullscreenAbsolute }}>
+                    
+                    <div style={{ ...fullScreen, ...centeredContent }}>
+                        <button onClick={this.openModal}>Open Modal</button>
+                    </div>
+
+                </div>
+                {
+                    this.state.isModalOpen ? (
+                        <Modal persistent shouldClose={this.closeModal}>
+                            <h3>Modal opened from <span style={highlighted}>{this.props.view}</span> view</h3>
+                            <button onClick={this.closeModal}>Close modal</button>
+                        </Modal>
+                    ) : null
+                }
             </div>
-        )
+        );
     }
 }
-
-const divStyle: CSSProperties = {
-    flexGrow: 1,
-    background: '#808080'
+const highlighted: CSSProperties = {
+    color: 'orange'
 }
-
-const imageStyle: CSSProperties = {
-    width: "100%",
-    height: "100%",
-    objectFit: 'cover'
+const content: CSSProperties = {
+    zIndex: 10
 }
-
-const centeredAbsolute: CSSProperties = {
-    position: 'absolute',
-    margin: 0,
-    left: '50%',
-    top: '50%',
-    transform: 'translate(-50%, -50%)'
+const container: CSSProperties = {
+    position: 'relative',
+    width: '100%',
+    height: '100%'
 }

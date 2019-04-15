@@ -3,29 +3,42 @@ import ReactDOM from "react-dom";
 import {View} from "./layout";
 import { fullScreen, centeredContent} from "../css";
 
-interface Props{
-    
+interface Props {
+    /** Using a persistent modal may cause it to never close if not handled manually */
+    persistent?: boolean;
+    shouldClose: () => void;
 }
 
-export default class Modal extends React.Component<Props>{
-    element: HTMLDivElement;
-    constructor(props: Props){
+export default class Modal extends React.Component<Props> {
+    
+    element: HTMLDivElement 
+
+    constructor(props: Props) {
         super(props);
-        this.element = document.createElement("div");
-        this.element.id = "modalRoot";
+        this.element = document.createElement('div');
+        this.element.id = 'modal-root';
     }
-    componentDidMount(){
+
+    onclick = () => {
+        if (!this.props.persistent) {
+            this.props.shouldClose();
+        }
+    }
+
+    componentDidMount() {
         document.body.appendChild(this.element);
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         document.body.removeChild(this.element);
     }
 
-    render(){
+    render() {
         return ReactDOM.createPortal(
-            this.props.children,
-            this.element
-        )
+            <div style={{ ...fullScreen, ...centeredContent }} onClick={this.onclick}>
+                {this.props.children}
+            </div>,
+            this.element,
+        );
     }
 }
