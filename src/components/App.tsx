@@ -2,7 +2,7 @@ import React, { Suspense, lazy, CSSProperties } from "React";
 import { BrowserRouter } from "react-router-dom";
 import ErrorBoundary from "./errorBoundary";
 import Modal from "./modal";
-import {fullScreen, centeredContent, fullscreenAbsolute} from "../css";
+import WelcomeScreen from "./welcomeScreen";
 import Spinner from "./spinner";
 
 const Layout = lazy(() => import('./layout'));
@@ -12,7 +12,7 @@ interface State {
 }
 export default class App extends React.Component<{}, State>{
     state: State = {
-        isModalOpen: false
+        isModalOpen: true
     }
     private openModal = () => this.setState({ isModalOpen: true });
     private closeModal = () => this.setState({ isModalOpen: false });
@@ -21,17 +21,15 @@ export default class App extends React.Component<{}, State>{
         return (
             <div style={content}>
             {
-                 this.state.isModalOpen ? (
-                    <Modal persistent shouldClose={this.closeModal}>
-                        <h3>Modal opened from <span style={highlighted}>hello</span> view</h3>
-                        <button onClick={this.closeModal}>Close modal</button>
-                    </Modal>  
-                    ) :  
+                this.state.isModalOpen ? (
                     <Modal persistent shouldClose={this.openModal}>
-                        <button onClick={this.openModal}>Open modal</button>
+                        <WelcomeScreen>
+                            <h1 style={highlighted}>Did you know that elephants can't jump?</h1>
+                            <button onClick={this.closeModal}>I don't care</button>
+                        </WelcomeScreen>
                     </Modal>
-
-                 }
+                ) :  null
+            }
             </div>
             
         );
@@ -42,7 +40,7 @@ export default class App extends React.Component<{}, State>{
                 <BrowserRouter>
                     <ErrorBoundary fallbackUI={<Spinner/>}>
                         {this.WelcomeScreen}
-                        <Suspense fallback={"hi"}>
+                        <Suspense fallback={<Spinner/>}>
                             <Layout/>
                         </Suspense>
                     </ErrorBoundary>
