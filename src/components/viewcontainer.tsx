@@ -1,7 +1,7 @@
 import React, {CSSProperties, Suspense, lazy} from "react";
 import { Route } from "react-router";
 import MainView from "./mainview";
-import DetailView from "./detailView";
+import DetailView from "./detailView/detailView";
 
 export default function View(){
     

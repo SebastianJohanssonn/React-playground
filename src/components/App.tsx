@@ -14,7 +14,6 @@ export default class App extends React.Component<{}, State>{
     state: State = {
         isModalOpen: true
     }
-    private openModal = () => this.setState({ isModalOpen: true });
     private closeModal = () => this.setState({ isModalOpen: false });
 
     private get WelcomeScreen(){
@@ -22,7 +21,7 @@ export default class App extends React.Component<{}, State>{
             <div style={content}>
             {
                 this.state.isModalOpen ? (
-                    <Modal persistent shouldClose={this.openModal}>
+                    <Modal persistent shouldClose={this.closeModal}>
                         <WelcomeScreen>
                             <h1 style={highlighted}>Did you know that elephants can't jump?</h1>
                             <button onClick={this.closeModal}>I don't care</button>
@@ -39,8 +38,8 @@ export default class App extends React.Component<{}, State>{
             <Suspense fallback={<Spinner/>}>
                 <BrowserRouter>
                     <ErrorBoundary fallbackUI={<Spinner/>}>
-                        {this.WelcomeScreen}
-                        <Suspense fallback={<Spinner/>}>
+                        
+                        <Suspense fallback={this.WelcomeScreen}>
                             <Layout/>
                         </Suspense>
                     </ErrorBoundary>
