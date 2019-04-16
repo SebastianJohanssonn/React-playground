@@ -14,7 +14,7 @@ export default class App extends React.Component<{}, State>{
     state: State = {
         isModalOpen: true
     }
-    private openModal = () => this.setState({ isModalOpen: true });
+
     private closeModal = () => this.setState({ isModalOpen: false });
 
     private get WelcomeScreen(){
@@ -22,16 +22,15 @@ export default class App extends React.Component<{}, State>{
             <div style={content}>
             {
                 this.state.isModalOpen ? (
-                    <Modal persistent shouldClose={this.openModal}>
+                    <Modal persistent shouldClose={this.closeModal}>
                         <WelcomeScreen>
-                            <h1 style={highlighted}>Did you know that elephants can't jump?</h1>
-                            <button onClick={this.closeModal}>I don't care</button>
+                            <h1 style={highlighted}>React Playground</h1>
+                            <button onClick={this.closeModal} style={button}>Enter</button>
                         </WelcomeScreen>
                     </Modal>
-                ) :  null
+                ) : null
             }
             </div>
-            
         );
     }
     render() {
@@ -55,4 +54,11 @@ const highlighted: CSSProperties = {
 }
 const content: CSSProperties = {
     zIndex: 10
+}
+const button = {
+    opacity: 1.5,
+    backgroundColor: "black",
+    borderRadius: "10px",
+    border: "3px solid orange",
+    color: "white"   
 }

@@ -15,6 +15,7 @@ export default class WelcomeScreen extends React.Component<{}>{
 
 const divStyle: CSSProperties = {
     backgroundColor: "black",
+    opacity: 0.9,
     height: "100%",
     width: "100%"
 }
